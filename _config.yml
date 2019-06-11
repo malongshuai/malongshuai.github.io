@@ -3,19 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: "骏马金龙的破匣子"
 subtitle:
-description:
+description: "问道之人，道心不坚，与道无缘"
 keywords:
-author: John Doe
-language:
+author: "骏马金龙"
+language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory
@@ -40,6 +40,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
+  hljs: true
   line_number: true
   auto_detect: false
   tab_replace:
@@ -79,4 +80,6 @@ theme: melody
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repository: git@github.com:malongshuai/malongshuai.github.io.git
+  branch: master

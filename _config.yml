@@ -3,9 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: "骏马金龙的破匣子"
-subtitle:
-description: "问道之人，道心不坚，与道无缘"
+title: "骏马金龙"
+subtitle: "我本问道人，道心不坚，必将与道无缘！"
+description: "我本问道人，道心不坚，必将与道无缘！"
+introduce: "我乃半路和尚，因优秀不够，发量尚多，常感恐慌和焦虑，不得不保持学习，丝毫不敢停留。若问此生所求，唯头上再也无发，证明我已成真佛。"
 keywords:
 author: "骏马金龙"
 language: zh-Hans
@@ -13,7 +14,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://www.junmajinlong.com
 root: /
 permalink: :title/
 permalink_defaults:
@@ -83,3 +84,11 @@ deploy:
   type: git
   repository: git@github.com:malongshuai/malongshuai.github.io.git
   branch: master
+
+
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000

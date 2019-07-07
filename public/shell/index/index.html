@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Shell系列文章"><meta name="keywords" content="Shell"><meta name="author" content="骏马金龙"><meta name="copyright" content="骏马金龙"><title>Shell系列文章 | 骏马金龙</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Shell-脚本、bash-特性系列"><span class="toc-number">1.</span> <span class="toc-text">1.Shell 脚本、bash 特性系列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-shell-高效率处理文本"><span class="toc-number">2.</span> <span class="toc-text">2.shell 高效率处理文本</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/touxiang.png"></div><div class="author-info__name text-center">骏马金龙</div><div class="author-info__description text-center">我本问道人，道心不坚，必将与道无缘！</div><div class="follow-button"><a href="https://github.com/malongshuai">GitHub</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">11</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">10</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">10</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" href="https://www.cnblogs.com/f-ck-need-u">我的博客园</a></div></div></div><div id="content-outer"><div class="plain" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">骏马金龙</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/linux/index">Linux系列</a><a class="site-page" href="/shell/index">Shell系列</a><a class="site-page" href="/mysql/index">MySQL系列</a><a class="site-page" href="/perl/index">Perl系列</a><a class="site-page" href="/python/index">Python系列</a><a class="site-page" href="/golang/index">Golang系列</a><a class="site-page" href="/ruby/index">Ruby系列</a><a class="site-page" href="/os/index">操作系统</a><a class="site-page" href="/coding/index">编程通用</a></span></div></div><div class="layout" id="content-inner"><article id="post"><div class="plain" id="post-title">Shell系列文章</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-07-06</time><span class="post-meta__separator">|</span><i class="fa fa-inbox" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Shell/"> Shell</a></div><div class="article-container" id="post-content"><p><a name="blogshell"></a><a name="blogshell1"></a></p>
+<h1 id="1-Shell-脚本、bash-特性系列"><a href="#1-Shell-脚本、bash-特性系列" class="headerlink" title="1.Shell 脚本、bash 特性系列"></a>1.Shell 脚本、bash 特性系列</h1><p>我在学习 shell 和 bash 时，遇到了非常多的问题，网上的答案和总结总是不尽人意，于是下决心大致阅览了一遍 man bash，不仅总结出了不少结论，当遇到问题时也知道是哪类问题 (很多时候还真不知道)，哪里找答案，受益极大。所以个人建议，如有关于 shell 和 bash 方面的问题时，先从 man bash 中获取答案。</p>
+<p>bash 最新英文手册：<a href="https://www.gnu.org/software/bash/manual/bashref.html" target="_blank" rel="noopener">手册</a><br>bash 4.0 中文手册：<a href="https://files.cnblogs.com/files/f-ck-need-u/Bash4.0%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3.pdf" target="_blank" rel="noopener">下载</a></p>
+<p>该 bash 中文手册翻译的挺好，但有些地方遗漏了内容，某些地方也遗漏了单词，而且毕竟是 4.0 版，和正在使用的 man bash 有些地方不同 (不少地方)，因此有疑问时建议中英文对照。</p>
+<p>强烈建议：<strong>子 shell 和执行环境的概念贯穿整个 shell，当予以最高程度的关注和重视。特别是在 shell 脚本出现 “意料之外” 又很难排查的问题时，极大可能是因为 shell 的环境问题。那些 shell 编程的书籍，只适合入门，学 shell 脚本的 “形”，不适合深入。如果有时间，建议有基础后阅读 man bash 来学 shell 的 “神”。</strong></p>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <ul>
+                    <li>1.<a href="http://www.cnblogs.com/f-ck-need-u/p/5915048.html" target="_blank">SHELL 脚本
+                            -- 简介</a></li>
+                    <li>2.<a href="http://www.cnblogs.com/f-ck-need-u/p/5915076.html" target="_blank">SHELL 脚本
+                            --echo 和 printf 打印输出</a></li>
+                    <li>3.<a href="http://www.cnblogs.com/f-ck-need-u/p/5915106.html" target="_blank">Bash 特性
+                            -- 多命令逻辑执行顺序</a></li>
+                    <li>4.<a href="http://www.cnblogs.com/f-ck-need-u/p/7229381.html" target="_blank">Bash 特性
+                            -- 变量 (基础)</a></li>
+                    <li>5.<a href="http://www.cnblogs.com/f-ck-need-u/p/7417651.html" target="_blank">Bash 特性 -
+                            bash 环境配置流程</a> (精)</li>
+                    <li>6.<a href="http://www.cnblogs.com/f-ck-need-u/p/7231870.html" target="_blank">SHELL 脚本
+                            -- 数学运算和 bc 命令</a></li>
+                    <li>7.<a href="http://www.cnblogs.com/f-ck-need-u/p/7231832.html" target="_blank">SHELL 脚本
+                            --expr 命令全解</a> (精)</li>
+                    <li>8.<a href="http://www.cnblogs.com/f-ck-need-u/p/7325378.html" target="_blank">Bash 特性
+                            -- 管道和重定向基础</a></li>
+                    <li>9.<a href="http://www.cnblogs.com/f-ck-need-u/p/7326254.html" target="_blank">Bash 特性
+                            --shell 数组基础</a></li>
+                    <li>10.<a href="http://www.cnblogs.com/f-ck-need-u/p/7385133.html" target="_blank">Bash 特性
+                            -- 别名 alias(通过 alias 让 rm 更安全)</a>(精)</li>
+                    <li>11.<a href="http://www.cnblogs.com/f-ck-need-u/p/7401591.html" target="_blank">Bash 特性
+                            -- 命令替换和命令组合</a></li>
+                    <li>12.<a href="http://www.cnblogs.com/f-ck-need-u/p/7426371.html" target="_blank">Bash 特性
+                            --shell 解析命令行的过程以及 eval 命令</a> (精)</li>
+                    <li>13.<a href="http://www.cnblogs.com/f-ck-need-u/p/8454364.html" target="_blank">Bash 特性
+                            --$ 后加引号 ($"string" 和 $'string')</a></li>
+                    <li>14.<a href="http://www.cnblogs.com/f-ck-need-u/p/7454174.html" target="_blank">Bash 特性
+                            --trap 捕捉信号方法论</a> (精)</li>
+                    <li>15.<a href="http://www.cnblogs.com/f-ck-need-u/p/8727401.html" target="_blank">Bash 特性
+                            -- 彻底搞懂 shell 的高级 I/O 重定向</a> (精)</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>16.<a href="http://www.cnblogs.com/f-ck-need-u/p/7402137.html" target="_blank">Bash 特性
+                            --IFS 简单说明</a></li>
+                    <li>17.<a href="http://www.cnblogs.com/f-ck-need-u/p/7402149.html" target="_blank">SHELL 脚本
+                            --read 命令</a></li>
+                    <li>18.<a href="http://www.cnblogs.com/f-ck-need-u/p/7427262.html" target="_blank">SHELL 脚本
+                            --date、sleep、usleep 命令</a></li>
+                    <li>19.<a href="http://www.cnblogs.com/f-ck-need-u/p/7427357.html" target="_blank">Bash 特性
+                            --test、[]、[[]] 命令</a></li>
+                    <li>20.<a href="http://www.cnblogs.com/f-ck-need-u/p/7429462.html" target="_blank">Bash 特性
+                            --shell 的编程结构体</a> (精)</li>
+                    <li>21.<a href="http://www.cnblogs.com/f-ck-need-u/p/7431578.html" target="_blank">Bash 特性
+                            --while 循环的陷阱</a></li>
+                    <li>22.<a href="http://www.cnblogs.com/f-ck-need-u/p/7521506.html" target="_blank">SHELL 脚本
+                            --tr 命令用法和特性全解</a></li>
+                    <li>23.<a href="http://www.cnblogs.com/f-ck-need-u/p/7521357.html.html" target="_blank">SHELL
+                            脚本 --cut 命令</a></li>
+                    <li>24.<a href="http://www.cnblogs.com/f-ck-need-u/p/7442886.html" target="_blank">SHELL 脚本
+                            -- 玩透 sort 命令</a> (精)</li>
+                    <li>25.<a href="http://www.cnblogs.com/f-ck-need-u/p/7439878.html" target="_blank">SHELL 脚本
+                            --sort 命令中文手册</a></li>
+                    <li>26.<a href="http://www.cnblogs.com/f-ck-need-u/p/7454597.html" target="_blank">SHELL 脚本
+                            --uniq 命令</a></li>
+                    <li>27.<a href="http://www.cnblogs.com/f-ck-need-u/p/7454621.html" target="_blank">SHELL 脚本
+                            --seq 命令</a></li>
+                    <li>28.<a href="http://www.cnblogs.com/f-ck-need-u/p/7518142.html" target="_blank">SHELL 脚本
+                            --functions 文件详细分析和说明</a> (精)</li>
+                    <li>29.<a href="http://www.cnblogs.com/f-ck-need-u/p/7524401.html" target="_blank">SHELL 脚本
+                            -- 如何写 SysV 服务管理脚本</a> (精)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">子shell、bash内置命令特殊性、后台任务的本质三部曲</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <ul>
+                    <li>1.<a href="https://www.cnblogs.com/f-ck-need-u/p/9183819.html" target="_blank">bash
+                            内置命令的特殊性，后台任务的 "本质"</a>(精)</li>
+                    <li>2. <a href="http://www.cnblogs.com/f-ck-need-u/p/7446194.html" target="_blank">什么时候进入子
+                            shell</a>(精)</li>
+                    <li>3.<a href="http://www.cnblogs.com/f-ck-need-u/p/8661501.html" target="_blank">shell
+                            脚本技巧：如何让 shell 脚本自杀 + bash 内置命令的特殊性</a> (精)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>find &amp; xargs &amp; grep &amp; awk</th>
+            <th>sed(pdf 版：<a href="http://down.51cto.com/data/2444639" target="_blank">玩透 sed：探究 sed 原理. pdf</a></th>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>1.<a href="https://www.cnblogs.com/f-ck-need-u/p/10704754.html" target="_blank">Linux
+                            find 常用用法示例 (精)</a></li>
+                    <li>2.<a href="https://www.cnblogs.com/f-ck-need-u/p/6995529.html" target="_blank">Linux
+                            find 运行机制详解 (精)</a></li>
+                    <li>3.<a href="https://www.cnblogs.com/f-ck-need-u/p/5925923.html" target="_blank">xargs
+                            原理剖析和用法详解 (精)</a></li>
+                    <li>4.<a href="https://www.cnblogs.com/f-ck-need-u/p/7462706.html" target="_blank">grep
+                            命令中文手册</a> (精)</li>
+                    <li>5.<a href="https://www.cnblogs.com/f-ck-need-u/p/7509812.html" target="_blank">awk
+                            知识点总结</a> (精)</li>
+                    <li>6. <a href="https://www.cnblogs.com/f-ck-need-u/p/9621130.html" target="_blank">基础正则表达式</a>
+                        (精)</li>
+                    <li>7.<a href="https://www.cnblogs.com/f-ck-need-u/p/9648439.html" target="_blank">Perl
+                            正则表达式超详细教程</a> (精)</li>
+                    <li>8.<a href="https://www.cnblogs.com/f-ck-need-u/p/7684762.html" target="_blank">pcre
+                            和正则表达式的误点</a></li>
+                </ul>
+            </td>
+            <td><a name="sed+awk"></a>
+                <ul>
+                    <li>1.<a href="https://www.cnblogs.com/f-ck-need-u/p/7499471.html" target="_blank">sed
+                            从入门到深入的使用心得</a></li>
+                    <li>2.<a href="https://www.cnblogs.com/f-ck-need-u/p/7488469.html" target="_blank">sed 修炼系列
+                            (一)：花拳绣腿之入门篇</a> (精)</li>
+                    <li>3.<a href="https://www.cnblogs.com/f-ck-need-u/p/7478188.html" target="_blank">sed 修炼系列
+                            (二)：武功心法 (info sed 翻译 + 注解)</a>(精)</li>
+                    <li>4.<a href="https://www.cnblogs.com/f-ck-need-u/p/7496916.html" target="_blank">sed 修炼系列
+                            (三)：sed 高级应用之窗口滑动技术</a> (精)</li>
+                    <li>5.<a href="https://www.cnblogs.com/f-ck-need-u/p/7499309.html" target="_blank">sed 修炼系列
+                            (四)：sed 中的疑难杂症</a> (精)</li>
+                    <li>6.<a href="https://www.cnblogs.com/f-ck-need-u/p/8506501.html" target="_blank">sed
+                            删除拼音的音调</a></li>
+                    <li>7.<a href="https://www.cnblogs.com/f-ck-need-u/p/8849371.html" target="_blank">sed 示例：从
+                            a 文件判断是否删除 b 文件中的行</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p><strong>一些脚本示例和技巧：</strong></p>
+                <ul>
+                    <li>1.<a href="https://www.cnblogs.com/f-ck-need-u/p/8785561.html" target="_blank">shell
+                            脚本技巧：判断 ssh 远程命令是否执行结束</a></li>
+                    <li>2.<a href="https://www.cnblogs.com/f-ck-need-u/p/9746985.html" target="_blank">shell
+                            脚本技巧：mapfile 读取文件内容保存到数组中</a></li>
+                    <li>3.<a href="https://www.cnblogs.com/f-ck-need-u/p/9749882.html" target="_blank">shell
+                            脚本技巧：tee 的花式用法和 pee</a></li>
+                    <li>4.<a href="https://www.cnblogs.com/f-ck-need-u/p/9758075.html" target="_blank">shell
+                            脚本技巧：getopt 设计 shell 脚本选项</a> (精)</li>
+                    <li>-------------------------------------------------------</li>
+                    <li>1.<a href="https://www.cnblogs.com/f-ck-need-u/p/7426987.html" target="_blank">shell
+                            脚本示例：计算毫秒级、微秒级时间差</a></li>
+                    <li>2.<a href="https://www.cnblogs.com/f-ck-need-u/p/7430259.html" target="_blank">shell
+                            脚本示例：批量比较多个文件的内容是否相同</a></li>
+                    <li>3.<a href="https://www.cnblogs.com/f-ck-need-u/p/7542210.html" target="_blank">shell
+                            脚本示例：expect 实现 scp/ssh-copy-id 非交互</a></li>
+                    <li>4.<a href="https://www.cnblogs.com/f-ck-need-u/p/9987052.html" target="_blank">shell
+                            脚本示例：shell 脚本动画小工具 (shell 版和 perl 版)</a></li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p><a name="blogparallel"></a></p>
+<h1 id="2-shell-高效率处理文本"><a href="#2-shell-高效率处理文本" class="headerlink" title="2.shell 高效率处理文本"></a>2.shell 高效率处理文本</h1><ul>
+<li>1.<a href="https://www.cnblogs.com/f-ck-need-u/p/7454671.html" target="_blank" rel="noopener">dd、split 和 csplit 命令</a></li>
+<li>2.<a href="https://www.cnblogs.com/f-ck-need-u/p/9752365.html" target="_blank" rel="noopener">shell 高效处理文本 (1)：xargs 并行处理</a> (精)</li>
+<li>3.GNU Parallel 6666666666</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">骏马金龙</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.junmajinlong.com/shell/index/">http://www.junmajinlong.com/shell/index/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.junmajinlong.com">骏马金龙</a>！</span></div></div><div class="addthis_inline_share_toolbox pull-right"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d2050fb3ccb60be" async></script><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Shell/">Shell</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wepay.png"><div class="post-qr-code__desc">微信打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.png"><div class="post-qr-code__desc">支付宝打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/python/index/"><i class="fa fa-chevron-left">  </i><span>Python系列文章</span></a></div><div class="next-post pull-right"><a href="/linux/index/"><span>Linux系列文章</span><i class="fa fa-chevron-right"></i></a></div></nav><div class="post-adv"><a href="https://www.vultr.com/?ref=8175428"><img src="/img/advs/vultr.png"></a></div><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '8a581da94f73c04beed3',
+  clientSecret: '514557ff1db4a8958ac3b745962c0036f384e4d2',
+  repo: 'malongshuai.github.io',
+  owner: 'malongshuai',
+  admin: 'malongshuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2019 By 骏马金龙</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>
